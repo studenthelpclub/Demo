@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskNest AI - Premium Citizen & Corporate Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind Config for Custom Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                            dark: '#0f172a',
+                            accent: '#10b981' // Premium Green
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'premium-hover': '0 20px 40px -10px rgba(14, 165, 233, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Premium Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism setup */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Service Card Hover Animations */
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-card:hover .icon-wrapper {
+            background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+            color: white;
+        }
+        
+        /* Floating WhatsApp Button Pulse */
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .btn-whatsapp-float {
+            animation: pulse-whatsapp 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-brand-500 selection:text-white relative">
+
+    <!-- Top Contact Bar -->
+    <div class="bg-brand-dark text-gray-300 py-2 text-sm hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="mailto:tasknestai@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <i class="fas fa-envelope text-brand-500"></i> tasknestai@gmail.com
+                </a>
+                <a href="https://wa.me/919776986830" target="_blank" class="hover:text-white transition-colors flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-green-500 text-base"></i> +91 9776986830
+                </a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-xs font-medium tracking-wider uppercase text-gray-400">Smart Tools for Smart Businesses</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo & Brand -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="bg-white p-1 rounded-xl shadow-sm border border-gray-100 group-hover:shadow-md transition-shadow">
+                        <img src="logo.webp" alt="TaskNest AI Logo" class="h-10 w-10 object-contain rounded-lg" onerror="this.src='https://placehold.co/100x100/0ea5e9/FFFFFF?text=TN'">
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight text-brand-dark">TaskNest <span class="text-brand-500">AI</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Home</a>
+                    <a href="#services" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">Services</a>
+                    <a href="#about" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">About Us</a>
+                    <a href="https://wa.me/919776986830" target="_blank" class="px-6 py-2.5 rounded-full bg-green-500 text-white font-semibold hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30 flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Chat on WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-600 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">Home</a>
+                <a href="#services" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">Services</a>
+                <a href="#about" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">About Us</a>
+                <a href="https://wa.me/919776986830" target="_blank" class="block px-4 py-3 mt-4 rounded-lg text-base font-bold text-white bg-green-500 hover:bg-green-600 text-center flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-brand-100/50 blur-3xl opacity-60"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-emerald-50/50 blur-3xl opacity-60"></div>
+            <!-- Grid Pattern -->
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQsIDE2NSwgMjMzLCAwLjEpIi8+PC9zdmc+')] opacity-50"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            <div data-aos="fade-down" data-aos-duration="800" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-600 font-semibold text-sm mb-8 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                Premium Corporate & Citizen Solutions
+            </div>
+            
+            <h1 data-aos="fade-up" data-aos-duration="1000" class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight leading-tight mb-6 max-w-4xl">
+                Streamline Your Work with <br class="hidden md:block" />
+                <span class="text-gradient">TaskNest AI</span>
+            </h1>
+            
+            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100" class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl leading-relaxed">
+                From fast-tracking essential government documents to advanced Excel data automation. We handle the complexity so you don't have to. Fast, secure, and purely professional.
+            </p>
+            
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a href="#services" class="px-8 py-4 rounded-xl bg-brand-dark text-white font-semibold text-lg hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2">
+                    Explore Services <i class="fas fa-arrow-right text-sm"></i>
+                </a>
+                <a href="https://wa.me/919776986830" target="_blank" class="px-8 py-4 rounded-xl bg-white text-gray-800 border-2 border-gray-100 font-semibold text-lg hover:border-green-500 hover:text-green-600 transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl text-green-500"></i> Connect on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-gray-50 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Our Comprehensive Solutions</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-brand-500 to-brand-accent mx-auto rounded-full mb-6"></div>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">Select a service below to view detailed processing times, requirements, and information.</p>
+            </div>
+
+            <!-- CATEGORY 1: Business & Data Solutions -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900">Business & Data Solutions</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Cards -->
+                    <a href="data-cleaning.html" data-aos="fade-up" data-aos-delay="50" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-brand-600 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Excel Data Cleaning</h4>
+                        <p class="text-sm text-gray-500">Remove duplicates, fix errors, and structure raw data beautifully.</p>
+                    </a>
+                    
+                    <a href="data-formatting.html" data-aos="fade-up" data-aos-delay="100" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-brand-600 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Data Formatting</h4>
+                        <p class="text-sm text-gray-500">Professional formatting, pivot tables, and visual alignment.</p>
+                    </a>
+
+                    <a href="excel-formulas.html" data-aos="fade-up" data-aos-delay="150" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-brand-600 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Advanced Formulas</h4>
+                        <p class="text-sm text-gray-500">Complex macros, VLOOKUPs, and automated cell logic setup.</p>
+                    </a>
+
+                    <a href="excel-data-entry.html" data-aos="fade-up" data-aos-delay="200" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-brand-600 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Excel Data Entry</h4>
+                        <p class="text-sm text-gray-500">Accurate, high-speed manual data entry operations.</p>
+                    </a>
+
+                    <a href="mis-report.html" data-aos="fade-up" data-aos-delay="250" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-brand-600 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">MIS Reporting</h4>
+                        <p class="text-sm text-gray-500">Comprehensive Management Information System dashboards.</p>
+                    </a>
+
+                    <a href="pdf-to-excel.html" data-aos="fade-up" data-aos-delay="300" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-brand-600 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-file-export"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">PDF to Excel</h4>
+                        <p class="text-sm text-gray-500">Flawless conversion of PDF documents to editable Excel sheets.</p>
+                    </a>
+
+                    <a href="review-management.html" data-aos="fade-up" data-aos-delay="350" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-brand-600 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Review Management</h4>
+                        <p class="text-sm text-gray-500">Enhance and manage your online business reputation.</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CATEGORY 2: Citizen & Government Services -->
+            <div class="mb-20">
+                <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-brand-600 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900">Essential Citizen Services</h3>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <!-- Compact Cards for smaller items -->
+                    <!-- Pattern: a > icon + text -->
+                    <a href="jati-certificate.html" data-aos="zoom-in" data-aos-delay="50" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-file-contract text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Jati Certificate</span>
+                    </a>
+                    <a href="niwas-certificate.html" data-aos="zoom-in" data-aos-delay="100" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-home text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Niwas Certificate</span>
+                    </a>
+                    <a href="aay-certificate.html" data-aos="zoom-in" data-aos-delay="150" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-rupee-sign text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Aay Certificate</span>
+                    </a>
+                    <a href="pancard.html" data-aos="zoom-in" data-aos-delay="200" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-address-card text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">PAN Card</span>
+                    </a>
+                    <a href="voter-id.html" data-aos="zoom-in" data-aos-delay="250" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-person-booth text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Voter ID</span>
+                    </a>
+                    <a href="ews.html" data-aos="zoom-in" data-aos-delay="50" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-file-alt text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">EWS</span>
+                    </a>
+                    <a href="obc.html" data-aos="zoom-in" data-aos-delay="100" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-file-alt text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">OBC</span>
+                    </a>
+                    <a href="ncl.html" data-aos="zoom-in" data-aos-delay="150" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-file-alt text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">NCL</span>
+                    </a>
+                    <a href="lagan-rasid.html" data-aos="zoom-in" data-aos-delay="200" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-receipt text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Lagan Rasid</span>
+                    </a>
+                    <a href="aayushman-card.html" data-aos="zoom-in" data-aos-delay="250" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-heartbeat text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Aayushman Card</span>
+                    </a>
+                    <a href="e-shram.html" data-aos="zoom-in" data-aos-delay="50" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-hard-hat text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">E-Shram Card</span>
+                    </a>
+                    <a href="abha.html" data-aos="zoom-in" data-aos-delay="100" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-notes-medical text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">ABHA Health ID</span>
+                    </a>
+                    <a href="ration-card.html" data-aos="zoom-in" data-aos-delay="150" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-shopping-basket text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Ration Card</span>
+                    </a>
+                    <a href="pension.html" data-aos="zoom-in" data-aos-delay="200" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-blind text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Old Age Pension</span>
+                    </a>
+                    <a href="scholarship.html" data-aos="zoom-in" data-aos-delay="250" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-graduation-cap text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Scholarship</span>
+                    </a>
+                    <a href="railway-ticket.html" data-aos="zoom-in" data-aos-delay="50" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-train text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Railway Ticket</span>
+                    </a>
+                    <a href="resume.html" data-aos="zoom-in" data-aos-delay="100" class="service-card flex flex-col items-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md text-center">
+                        <i class="fas fa-file-word text-2xl text-brand-500 mb-3"></i>
+                        <span class="font-semibold text-gray-800 text-sm">Resume Writing</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CATEGORY 3: Educational (IGNOU) Services -->
+            <div>
+                <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900">Educational (IGNOU) Support</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="ignou-admission.html" data-aos="fade-up" data-aos-delay="50" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-emerald-500 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">New Admission</h4>
+                        <p class="text-sm text-gray-500">Hassle-free application process for new university enrollments.</p>
+                    </a>
+
+                    <a href="ignou-reregistration.html" data-aos="fade-up" data-aos-delay="100" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-emerald-500 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Re-registration</h4>
+                        <p class="text-sm text-gray-500">Seamless semester or year re-registration processing.</p>
+                    </a>
+
+                    <a href="ignou-exam-form.html" data-aos="fade-up" data-aos-delay="150" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-emerald-500 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Exam Form Filling</h4>
+                        <p class="text-sm text-gray-500">Accurate and timely submission of university examination forms.</p>
+                    </a>
+
+                    <a href="ignou-assignments.html" data-aos="fade-up" data-aos-delay="200" class="service-card block bg-white rounded-2xl p-6 shadow-premium border border-gray-100 hover:shadow-premium-hover">
+                        <div class="icon-wrapper w-12 h-12 rounded-xl bg-gray-50 text-emerald-500 flex items-center justify-center text-xl mb-4 transition-colors">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Solved Assignments</h4>
+                        <p class="text-sm text-gray-500">High-quality, ready-to-reference solved assignment PDFs.</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark pt-16 pb-8 border-t border-gray-800 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Brand Info -->
+                <div>
+                    <a href="#" class="flex items-center gap-3 mb-6">
+                        <div class="bg-white p-1 rounded-lg">
+                            <img src="logo.webp" alt="TaskNest AI Logo" class="h-8 w-8 object-contain" onerror="this.src='https://placehold.co/100x100/0ea5e9/FFFFFF?text=TN'">
+                        </div>
+                        <span class="font-bold text-2xl text-white">TaskNest <span class="text-brand-500">AI</span></span>
+                    </a>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        TaskNest AI provides premium citizen services, educational support, and B2B solutions under one roof. Fast, reliable, and hassle-free processing for all your needs.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-6 uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="about.html" class="text-gray-400 hover:text-brand-500 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-brand-500 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Contact Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-brand-500 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Privacy Policy</a></li>
+                        <li><a href="disclaimer.html" class="text-gray-400 hover:text-brand-500 transition-colors flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-semibold text-lg mb-6 uppercase tracking-wider">Contact Info</h4>
+                    <div class="space-y-4 text-gray-400">
+                        <p class="flex items-start gap-4">
+                            <i class="fab fa-whatsapp text-green-500 mt-1 text-xl"></i>
+                            <span>
+                                <strong class="block text-white font-medium mb-1">WhatsApp / Call</strong>
+                                <a href="https://wa.me/919776986830" class="hover:text-green-400 transition-colors">+91 9776986830</a>
+                            </span>
+                        </p>
+                        <p class="flex items-start gap-4 mt-6">
+                            <i class="fas fa-envelope text-brand-500 mt-1 text-xl"></i>
+                            <span>
+                                <strong class="block text-white font-medium mb-1">Email Us</strong>
+                                <a href="mailto:tasknestai@gmail.com" class="hover:text-brand-400 transition-colors">tasknestai@gmail.com</a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm text-center md:text-left">
+                    &copy; <script>document.write(new Date().getFullYear())</script> TaskNest AI. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919776986830" target="_blank" aria-label="Chat on WhatsApp" class="btn-whatsapp-float fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:bg-[#1ebe57] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#25D366]">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS Animation Library
+        AOS.init({
+            once: true, // whether animation should happen only once - while scrolling down
+            offset: 50, // offset (in px) from the original trigger point
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('py-0', 'py-1'); // slight visual compression
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('py-1', 'py-0');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')){
+                icon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                icon.classList.replace('fa-bars', 'fa-times');
+            }
+        });
+        
+        // Close menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.replace('fa-times', 'fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
